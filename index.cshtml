@@ -1,0 +1,55 @@
+@model List<REPOLIDO_MachineProblem1.Models.StudentHonor>
+
+<h2>Student Honors</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" />
+    </div>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div>
+        <label asp-for="Grade"></label>
+        <input asp-for="Grade" class="form-control" />
+        <span asp-validation-for="Grade" class="text-danger"></span>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Compute Honor</button>
+</form>
+
+
+<hr />
+
+<h3>Honor List</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Honor</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Grade</td>
+            <td>@item.Honor</td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
